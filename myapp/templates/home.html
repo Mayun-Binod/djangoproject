@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <div class="container" style="text-align: center;">
+        {% include 'navbar.html' %}
+        <h1>Welcome to our website</h1>
+        <form action="/index/" method="POST">
+            {% csrf_token %}
+            <!-- <input type="radio" name="check"> -->
+            <input type="checkbox" value="True" name="check">
+            <!-- <input type="text" name="check"> -->
+            <button>send</button>
+        </form>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit id nihil commodi odit. Aperiam voluptatem, nulla dolores officiis tenetur quas voluptatum asperiores inventore quasi porro accusantium voluptates vero incidunt est esse hic iusto odit illum ipsa excepturi modi dignissimos quae. Nostrum dolorum sapiente cupiditate debitis fugiat maiores praesentium eius officiis veritatis corporis rerum, libero porro, saepe minima! Ut, suscipit libero!</p>
+        <button>Contact US</button>
+
+        <!-- Accessing dynamic values -->
+        {% if isActive %}
+        <div>
+            <h1>Today date is {{ date }}</h1>
+            <h2>YouTube Channel name is {{ name }}</h2>
+            <hr>
+            <h1>Student Data</h1>
+            <h2>Student name: {{ student_data.student_name }}</h2>
+            <h2>Student college: {{ student_data.student_college }}</h2>
+            <h2>Student city: {{ student_data.student_city }}</h2>
+            <hr>
+            <h1>Python Good Programs</h1>
+            {% for list in list_of_programs %}
+                <h2>Program: {{ list }}</h2>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
